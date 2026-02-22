@@ -6,7 +6,7 @@ const HARGA = {
     fillet500: 60000
 };
 
-const WA_NUMBER = "6281234567890"; // GANTI NOMOR WA
+const WA_NUMBER = "6289603459011"; // GANTI NOMOR WA
 
 document.querySelectorAll("input[type='number']")
     .forEach(el => el.addEventListener("input", hitungTotal));
