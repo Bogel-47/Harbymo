@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<title>Harbymo Original Grill</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+:root {
+    --black:#111;
+    --gray:#666;
+    --light:#f3f3f3;
+    --border:#ddd;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: var(--light);
+    margin: 0;
+    padding: 20px;
+}
+
+/* CONTAINER */
+.container {
+    max-width: 520px;
+    margin: auto;
+    background: #fff;
+    padding: 24px;
+    border-radius: 16px;
+    box-shadow: 0 10px 30px rgba(0,0,0,.08);
+}
+
+/* HEADER */
+h1 {
+    text-align: center;
+    margin: 0;
+    font-size: 22px;
+}
+
+.subtitle {
+    text-align: center;
+    font-size: 13px;
+    color: var(--gray);
+    margin: 6px 0 24px;
+}
+
+/* FORM */
+.form-group {
+    margin-bottom: 14px;
+}
+
+label {
+    font-weight: bold;
+    font-size: 14px;
+    display: block;
+}
+
+.price-tag {
+    font-weight: normal;
+    font-size: 12px;
+    color: var(--gray);
+}
+
+input, select {
+    width: 100%;
+    padding: 10px 12px;
+    margin-top: 6px;
+    border-radius: 10px;
+    border: 1px solid var(--border);
+    font-size: 14px;
+}
+
+/* GRID UNTUK PRODUK */
+.grid-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+}
+
+/* BADGE */
+.badge {
+    background: var(--black);
+    color: #fff;
+    font-size: 12px;
+    padding: 8px;
+    border-radius: 10px;
+    text-align: center;
+    display: none;
+}
+
+/* TOTAL */
+.total {
+    margin: 20px 0 10px;
+    padding: 14px;
+    background: #fafafa;
+    border-radius: 12px;
+    text-align: center;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+/* ERROR */
+.error {
+    text-align: center;
+    color: #b22222;
+    font-size: 13px;
+    display: none;
+}
+
+/* BUTTON */
+button {
+    width: 100%;
+    padding: 14px;
+    margin-top: 14px;
+    background: var(--black);
+    border: none;
+    color: #fff;
+    font-size: 15px;
+    border-radius: 12px;
+    cursor: pointer;
+}
+
+button:hover {
+    opacity: .85;
+}
+
+/* FOOTER */
+.footer {
+    text-align: center;
+    margin-top: 16px;
+    font-size: 12px;
+    color: var(--gray);
+}
+
+/* POPUP */
+#popupOverlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,.6);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+.popup {
+    background: #fff;
+    width: 100%;
+    max-width: 360px;
+    border-radius: 16px;
+    padding: 20px;
+    text-align: center;
+}
+
+.popup-actions {
+    display: flex;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.popup-actions button {
+    flex: 1;
+}
+
+/* RESPONSIVE DESKTOP */
+@media (min-width: 768px) {
+    body {
+        padding: 40px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+    <h1>Harbymo Original Grill</h1>
+    <div class="subtitle">Ayam Bakar & Fillet Premium</div>
+
+    <div class="grid-2">
+        <div class="form-group">
+            <label>Ayam Bakar <span class="price-tag">(Rp22.000)</span></label>
+            <input type="number" id="ayamBakar" min="0" value="0">
+        </div>
+
+        <div class="form-group">
+            <label>Ayam Goreng <span class="price-tag">(Rp18.000)</span></label>
+            <input type="number" id="ayamGoreng" min="0" value="0">
+        </div>
+
+        <div class="form-group">
+            <label>Fillet 100g <span class="price-tag">(Rp20.000)</span></label>
+            <input type="number" id="fillet100" min="0" value="0">
+        </div>
+
+        <div class="form-group">
+            <label>Fillet 200g <span class="price-tag">(Rp30.000)</span></label>
+            <input type="number" id="fillet200" min="0" value="0">
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label>Fillet 500g <span class="price-tag">(Rp60.000)</span></label>
+        <input type="number" id="fillet500" min="0" value="0">
+    </div>
+
+    <div class="form-group">
+        <label>Metode Pesanan (Wajib)</label>
+        <select id="metode">
+            <option value="">-- Pilih Ambil / Kirim --</option>
+            <option value="Ambil">Ambil Langsung</option>
+            <option value="Kirim">Kirim</option>
+        </select>
+    </div>
+
+    <div class="badge" id="gratisOngkir">
+        🎉 GRATIS ONGKIR KHUSUS CIMAHI
+    </div>
+
+    <div class="form-group">
+        <label>Nama</label>
+        <input type="text" id="nama">
+    </div>
+
+    <div class="form-group">
+        <label>Alamat (Wajib)</label>
+        <input type="text" id="alamat">
+    </div>
+
+    <div class="form-group">
+        <label>Jam Ambil (Wajib)</label>
+        <input type="time" id="jam">
+    </div>
+
+    <div class="total" id="totalHarga">Total: Rp0</div>
+    <div class="error" id="errorMsg"></div>
+
+    <button onclick="openPopup()">Pesan Sekarang</button>
+
+    <div class="footer">© Harbymo Original Grill</div>
+</div>
+
+<div id="popupOverlay">
+    <div class="popup">
+        <h3>Informasi Pengiriman</h3>
+        <p>
+            🚚 Pengiriman hanya hari <b>MINGGU</b><br><br>
+            📦 Ambil langsung tersedia setiap hari
+        </p>
+        <div class="popup-actions">
+            <button onclick="closePopup()">Batal</button>
+            <button onclick="sendWA()">Lanjutkan</button>
+        </div>
+    </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>

@@ -2,262 +2,209 @@
 <html lang="id">
 <head>
 <meta charset="UTF-8">
-<title>Harbymo Original Grill</title>
+<title>Harbymo Original Grill | Ayam Bakar & Goreng Sejak 2016</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <style>
 :root {
     --black:#111;
     --gray:#666;
-    --light:#f3f3f3;
-    --border:#ddd;
+    --light:#f5f5f5;
 }
 
-* {
-    box-sizing: border-box;
-}
+* { box-sizing: border-box; }
 
 body {
+    margin: 0;
     font-family: Arial, sans-serif;
     background: var(--light);
-    margin: 0;
-    padding: 20px;
+    color: var(--black);
 }
 
-/* CONTAINER */
-.container {
-    max-width: 520px;
+/* ===== HERO ===== */
+.hero {
+    background: #111;
+    color: #fff;
+    padding: 80px 20px;
+    text-align: center;
+}
+
+.hero h1 {
+    font-size: 32px;
+    margin-bottom: 10px;
+}
+
+.hero p {
+    font-size: 16px;
+    color: #ddd;
+    max-width: 600px;
     margin: auto;
+}
+
+.hero button {
+    margin-top: 30px;
+    padding: 14px 28px;
+    font-size: 16px;
     background: #fff;
-    padding: 24px;
-    border-radius: 16px;
-    box-shadow: 0 10px 30px rgba(0,0,0,.08);
-}
-
-/* HEADER */
-h1 {
-    text-align: center;
-    margin: 0;
-    font-size: 22px;
-}
-
-.subtitle {
-    text-align: center;
-    font-size: 13px;
-    color: var(--gray);
-    margin: 6px 0 24px;
-}
-
-/* FORM */
-.form-group {
-    margin-bottom: 14px;
-}
-
-label {
-    font-weight: bold;
-    font-size: 14px;
-    display: block;
-}
-
-.price-tag {
-    font-weight: normal;
-    font-size: 12px;
-    color: var(--gray);
-}
-
-input, select {
-    width: 100%;
-    padding: 10px 12px;
-    margin-top: 6px;
-    border-radius: 10px;
-    border: 1px solid var(--border);
-    font-size: 14px;
-}
-
-/* GRID UNTUK PRODUK */
-.grid-2 {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 12px;
-}
-
-/* BADGE */
-.badge {
-    background: var(--black);
-    color: #fff;
-    font-size: 12px;
-    padding: 8px;
-    border-radius: 10px;
-    text-align: center;
-    display: none;
-}
-
-/* TOTAL */
-.total {
-    margin: 20px 0 10px;
-    padding: 14px;
-    background: #fafafa;
-    border-radius: 12px;
-    text-align: center;
-    font-size: 18px;
-    font-weight: bold;
-}
-
-/* ERROR */
-.error {
-    text-align: center;
-    color: #b22222;
-    font-size: 13px;
-    display: none;
-}
-
-/* BUTTON */
-button {
-    width: 100%;
-    padding: 14px;
-    margin-top: 14px;
-    background: var(--black);
+    color: #111;
     border: none;
-    color: #fff;
-    font-size: 15px;
-    border-radius: 12px;
+    border-radius: 30px;
     cursor: pointer;
 }
 
-button:hover {
-    opacity: .85;
+.hero button:hover {
+    opacity: .9;
 }
 
-/* FOOTER */
-.footer {
+/* ===== SECTION ===== */
+.section {
+    padding: 60px 20px;
+    max-width: 1000px;
+    margin: auto;
+}
+
+.section h2 {
     text-align: center;
-    margin-top: 16px;
+    margin-bottom: 20px;
+}
+
+.section p {
+    text-align: center;
+    max-width: 700px;
+    margin: auto;
+    color: var(--gray);
+    line-height: 1.6;
+}
+
+/* ===== FEATURES ===== */
+.features {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 20px;
+    margin-top: 40px;
+}
+
+.feature-box {
+    background: #fff;
+    padding: 20px;
+    border-radius: 14px;
+    text-align: center;
+    box-shadow: 0 6px 20px rgba(0,0,0,.06);
+}
+
+.feature-box h3 {
+    margin-bottom: 10px;
+}
+
+/* ===== GALLERY ===== */
+.gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 15px;
+    margin-top: 40px;
+}
+
+.gallery img {
+    width: 100%;
+    border-radius: 14px;
+    object-fit: cover;
+}
+
+/* ===== CTA ===== */
+.cta {
+    background: #111;
+    color: #fff;
+    padding: 60px 20px;
+    text-align: center;
+}
+
+.cta h2 {
+    margin-bottom: 10px;
+}
+
+.cta p {
+    color: #ddd;
+}
+
+.cta a {
+    display: inline-block;
+    margin-top: 25px;
+    padding: 14px 30px;
+    background: #fff;
+    color: #111;
+    border-radius: 30px;
+    text-decoration: none;
+    font-size: 16px;
+}
+
+/* ===== FOOTER ===== */
+footer {
+    text-align: center;
+    padding: 20px;
     font-size: 12px;
     color: var(--gray);
-}
-
-/* POPUP */
-#popupOverlay {
-    position: fixed;
-    inset: 0;
-    background: rgba(0,0,0,.6);
-    display: none;
-    align-items: center;
-    justify-content: center;
-    padding: 20px;
-}
-
-.popup {
-    background: #fff;
-    width: 100%;
-    max-width: 360px;
-    border-radius: 16px;
-    padding: 20px;
-    text-align: center;
-}
-
-.popup-actions {
-    display: flex;
-    gap: 10px;
-    margin-top: 20px;
-}
-
-.popup-actions button {
-    flex: 1;
-}
-
-/* RESPONSIVE DESKTOP */
-@media (min-width: 768px) {
-    body {
-        padding: 40px;
-    }
 }
 </style>
 </head>
 
 <body>
 
-<div class="container">
+<!-- HERO -->
+<section class="hero">
     <h1>Harbymo Original Grill</h1>
-    <div class="subtitle">Ayam Bakar & Fillet Premium</div>
+    <p>Ayam bakar & goreng berkualitas, diolah dengan resep khas sejak tahun 2016.  
+    Lezat, halal, dan dipercaya pelanggan.</p>
+    <button onclick="location.href='order.html'">Pesan Sekarang</button>
+</section>
 
-    <div class="grid-2">
-        <div class="form-group">
-            <label>Ayam Bakar <span class="price-tag">(Rp22.000)</span></label>
-            <input type="number" id="ayamBakar" min="0" value="0">
+<!-- ABOUT -->
+<section class="section">
+    <h2>Tentang Harbymo</h2>
+    <p>
+        Harbymo Original Grill telah berdiri sejak <b>tahun 2016</b>, berawal dari usaha rumahan
+        hingga dipercaya oleh pelanggan setia di Cimahi dan sekitarnya.  
+        Kami menggunakan bahan pilihan, proses higienis, dan telah <b>bersertifikat Halal</b>
+        untuk menjamin kualitas dan keamanan produk.
+    </p>
+
+    <div class="features">
+        <div class="feature-box">
+            <h3>🔥 Sejak 2016</h3>
+            <p>Pengalaman bertahun-tahun menghadirkan rasa yang konsisten.</p>
         </div>
-
-        <div class="form-group">
-            <label>Ayam Goreng <span class="price-tag">(Rp18.000)</span></label>
-            <input type="number" id="ayamGoreng" min="0" value="0">
+        <div class="feature-box">
+            <h3>✅ Halal</h3>
+            <p>Telah bersertifikat halal dan diproses secara higienis.</p>
         </div>
-
-        <div class="form-group">
-            <label>Fillet 100g <span class="price-tag">(Rp20.000)</span></label>
-            <input type="number" id="fillet100" min="0" value="0">
-        </div>
-
-        <div class="form-group">
-            <label>Fillet 200g <span class="price-tag">(Rp30.000)</span></label>
-            <input type="number" id="fillet200" min="0" value="0">
-        </div>
-    </div>
-
-    <div class="form-group">
-        <label>Fillet 500g <span class="price-tag">(Rp60.000)</span></label>
-        <input type="number" id="fillet500" min="0" value="0">
-    </div>
-
-    <div class="form-group">
-        <label>Metode Pesanan (Wajib)</label>
-        <select id="metode">
-            <option value="">-- Pilih Ambil / Kirim --</option>
-            <option value="Ambil">Ambil Langsung</option>
-            <option value="Kirim">Kirim</option>
-        </select>
-    </div>
-
-    <div class="badge" id="gratisOngkir">
-        🎉 GRATIS ONGKIR KHUSUS CIMAHI
-    </div>
-
-    <div class="form-group">
-        <label>Nama</label>
-        <input type="text" id="nama">
-    </div>
-
-    <div class="form-group">
-        <label>Alamat (Wajib)</label>
-        <input type="text" id="alamat">
-    </div>
-
-    <div class="form-group">
-        <label>Jam Ambil (Wajib)</label>
-        <input type="time" id="jam">
-    </div>
-
-    <div class="total" id="totalHarga">Total: Rp0</div>
-    <div class="error" id="errorMsg"></div>
-
-    <button onclick="openPopup()">Pesan Sekarang</button>
-
-    <div class="footer">© Harbymo Original Grill</div>
-</div>
-
-<div id="popupOverlay">
-    <div class="popup">
-        <h3>Informasi Pengiriman</h3>
-        <p>
-            🚚 Pengiriman hanya hari <b>MINGGU</b><br><br>
-            📦 Ambil langsung tersedia setiap hari
-        </p>
-        <div class="popup-actions">
-            <button onclick="closePopup()">Batal</button>
-            <button onclick="sendWA()">Lanjutkan</button>
+        <div class="feature-box">
+            <h3>🍗 Fresh & Berkualitas</h3>
+            <p>Daging ayam segar, tanpa bahan berbahaya.</p>
         </div>
     </div>
-</div>
+</section>
 
-<script src="script.js"></script>
+<!-- GALLERY -->
+<section class="section">
+    <h2>Produk Kami</h2>
+    <p>Ayam bakar & goreng dengan cita rasa khas Harbymo.</p>
+
+    <div class="gallery">
+        <img src="images/ayam-bakar.jpg" alt="Ayam Bakar Harbymo">
+        <img src="images/ayam-goreng.jpg" alt="Ayam Goreng Harbymo">
+        <img src="images/fillet.jpg" alt="Ayam Fillet Harbymo">
+    </div>
+</section>
+
+<!-- CTA -->
+<section class="cta">
+    <h2>Siap Menikmati Harbymo?</h2>
+    <p>Pesan sekarang dan rasakan kelezatan ayam bakar & goreng favorit keluarga.</p>
+    <a href="order.html">Pesan Sekarang</a>
+</section>
+
+<footer>
+    © 2016–2026 Harbymo Original Grill • Halal • Fresh
+</footer>
+
 </body>
 </html>
