@@ -2,11 +2,11 @@
  * KONFIGURASI HARGA
  *********************************/
 const HARGA = {
-    ayamBakar: 25000,
-    ayamGoreng: 25000,
-    fillet100: 17000,
-    fillet200: 28000,
-    fillet500: 55000
+    ayamBakar: 22000,
+    ayamGoreng: 18000,
+    fillet100: 20000,
+    fillet200: 30000,
+    fillet500: 60000
 };
 
 // GANTI DENGAN NOMOR WA BISNIS (FORMAT 62)
