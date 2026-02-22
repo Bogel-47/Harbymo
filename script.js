@@ -1,6 +1,3 @@
-/*********************************
- * KONFIGURASI HARGA
- *********************************/
 const HARGA = {
     ayamBakar: 22000,
     ayamGoreng: 18000,
@@ -9,95 +6,95 @@ const HARGA = {
     fillet500: 60000
 };
 
-// GANTI DENGAN NOMOR WA BISNIS (FORMAT 62)
-const NOMOR_WA = "6289603459011";
+const WA_NUMBER = "6281234567890"; // GANTI NOMOR WA
 
-/*********************************
- * HITUNG TOTAL OTOMATIS
- *********************************/
+document.querySelectorAll("input[type='number']")
+    .forEach(el => el.addEventListener("input", hitungTotal));
+
+document.getElementById("metode")
+    .addEventListener("change", cekMetode);
+
 function hitungTotal() {
-    const bakar  = parseInt(document.getElementById("ayamBakar").value) || 0;
-    const goreng = parseInt(document.getElementById("ayamGoreng").value) || 0;
-    const f100   = parseInt(document.getElementById("ayamFillet100").value) || 0;
-    const f200   = parseInt(document.getElementById("ayamFillet200").value) || 0;
-    const f500   = parseInt(document.getElementById("ayamFillet").value) || 0;
-
     const total =
-        (bakar  * HARGA.ayamBakar) +
-        (goreng * HARGA.ayamGoreng) +
-        (f100   * HARGA.fillet100) +
-        (f200   * HARGA.fillet200) +
-        (f500   * HARGA.fillet500);
+        ayamBakar.value * HARGA.ayamBakar +
+        ayamGoreng.value * HARGA.ayamGoreng +
+        fillet100.value * HARGA.fillet100 +
+        fillet200.value * HARGA.fillet200 +
+        fillet500.value * HARGA.fillet500;
 
-    document.getElementById("totalHarga").innerText =
-        "Total: Rp" + total.toLocaleString("id-ID");
+    totalHarga.innerText = "Total: Rp" + total.toLocaleString("id-ID");
 }
 
-/*********************************
- * BUKA POPUP KONFIRMASI
- *********************************/
-function kirimWhatsApp() {
-    document.getElementById("popupOverlay").style.display = "flex";
+function cekMetode() {
+    gratisOngkir.style.display =
+        metode.value === "Kirim" ? "block" : "none";
 }
 
-/*********************************
- * TUTUP POPUP
- *********************************/
-function tutupPopup() {
-    document.getElementById("popupOverlay").style.display = "none";
-}
+function openPopup() {
+    errorMsg.style.display = "none";
+    hitungTotal();
 
-/*********************************
- * LANJUTKAN PESAN → WHATSAPP
- *********************************/
-function lanjutPesan() {
-    tutupPopup();
-
-    const bakar  = document.getElementById("ayamBakar").value || 0;
-    const goreng = document.getElementById("ayamGoreng").value || 0;
-    const f100   = document.getElementById("ayamFillet100").value || 0;
-    const f200   = document.getElementById("ayamFillet200").value || 0;
-    const f500   = document.getElementById("ayamFillet").value || 0;
-
-    if (bakar == 0 && goreng == 0 && f100 == 0 && f200 == 0 && f500 == 0) {
-        alert("Silakan pilih minimal 1 menu.");
+    if (
+        ayamBakar.value == 0 &&
+        ayamGoreng.value == 0 &&
+        fillet100.value == 0 &&
+        fillet200.value == 0 &&
+        fillet500.value == 0
+    ) {
+        tampilError("Silakan pilih minimal 1 menu.");
         return;
     }
 
-    const nama   = document.getElementById("nama").value || "-";
-    const alamat = document.getElementById("alamat").value || "-";
-    const jam    = document.getElementById("jam").value || "-";
-    const total  = document.getElementById("totalHarga").innerText;
+    if (metode.value === "") {
+        tampilError("Silakan pilih metode Ambil atau Kirim.");
+        return;
+    }
 
-    const pesan = `Halo Harbymo Original Grill 👋
-Saya ingin pesan (FRESH):
+    if (alamat.value.trim() === "") {
+        tampilError("Alamat wajib diisi.");
+        return;
+    }
 
-- Ayam Bakar      : ${bakar} ekor
-- Ayam Goreng     : ${goreng} ekor
-- Ayam Fillet 500g: ${f500} pack
-- Ayam Fillet 200g: ${f200} pack
-- Ayam Fillet 100g: ${f100} pack
+    if (jam.value === "") {
+        tampilError("Jam ambil wajib diisi.");
+        return;
+    }
 
-${total}
-
-Nama: ${nama}
-Alamat: ${alamat}
-Jam Ambil: ${jam}
-
-Catatan:
-Pengiriman hanya HARI MINGGU
-
-Terima kasih 🙏`;
-
-    const url = `https://wa.me/${NOMOR_WA}?text=${encodeURIComponent(pesan)}`;
-    window.open(url, "_blank");
+    popupOverlay.style.display = "flex";
 }
 
-/*********************************
- * EVENT LISTENER
- *********************************/
-document.getElementById("ayamBakar").addEventListener("input", hitungTotal);
-document.getElementById("ayamGoreng").addEventListener("input", hitungTotal);
-document.getElementById("ayamFillet").addEventListener("input", hitungTotal);
-document.getElementById("ayamFillet100").addEventListener("input", hitungTotal);
-document.getElementById("ayamFillet200").addEventListener("input", hitungTotal);
+function tampilError(pesan) {
+    errorMsg.innerText = pesan;
+    errorMsg.style.display = "block";
+}
+
+function closePopup() {
+    popupOverlay.style.display = "none";
+}
+
+function sendWA() {
+    const pesan = `
+Halo Harbymo Original Grill
+
+Pesanan:
+- Ayam Bakar: ${ayamBakar.value}
+- Ayam Goreng: ${ayamGoreng.value}
+- Fillet 100g: ${fillet100.value}
+- Fillet 200g: ${fillet200.value}
+- Fillet 500g: ${fillet500.value}
+
+Metode: ${metode.value}
+Nama: ${nama.value || "-"}
+Alamat: ${alamat.value}
+Jam Ambil: ${jam.value}
+
+${totalHarga.innerText}
+`;
+
+    window.open(
+        `https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(pesan)}`,
+        "_blank"
+    );
+
+    closePopup();
+}
