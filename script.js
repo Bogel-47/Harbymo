@@ -1,0 +1,71 @@
+
+const HARGA = {
+    ayamBakar: 25000,
+    ayamGoreng: 25000,
+    fillet100: 17000,
+    fillet200: 28000,
+    fillet500: 55000
+};
+
+const NOMOR_WA = "6289603459011";
+
+function hitungTotal() {
+    const bakar  = parseInt(document.getElementById("ayamBakar").value) || 0;
+    const goreng = parseInt(document.getElementById("ayamGoreng").value) || 0;
+
+    const f100 = parseInt(document.getElementById("ayamFillet100").value) || 0;
+    const f200 = parseInt(document.getElementById("ayamFillet200").value) || 0;
+    const f500 = parseInt(document.getElementById("ayamFillet").value) || 0;
+
+    const total =
+        (bakar  * HARGA.ayamBakar) +
+        (goreng * HARGA.ayamGoreng) +
+        (f100   * HARGA.fillet100) +
+        (f200   * HARGA.fillet200) +
+        (f500   * HARGA.fillet500);
+
+    document.getElementById("totalHarga").innerText =
+        "Total: Rp" + total.toLocaleString("id-ID");
+}
+
+function kirimWhatsApp() {
+    const bakar  = document.getElementById("ayamBakar").value || 0;
+    const goreng = document.getElementById("ayamGoreng").value || 0;
+    const fillet = document.getElementById("ayamFillet").value || 0;
+    const fillet100 = document.getElementById("ayamFillet100").value || 0;
+    const fillet200 = document.getElementById("ayamFillet200").value || 0;
+
+    if (bakar == 0 && goreng == 0 && fillet == 0) {
+        alert("Silakan pilih minimal 1 menu.");
+        return;
+    }
+
+    const nama   = document.getElementById("nama").value || "-";
+    const alamat = document.getElementById("alamat").value || "-";
+    const jam    = document.getElementById("jam").value || "-";
+    const total  = document.getElementById("totalHarga").innerText;
+
+    const pesan = `Halo Harbymo Original Grill 👋
+Saya ingin pesan (FRESH):
+
+- Ayam Bakar      : ${bakar} ekor
+- Ayam Goreng     : ${goreng} ekor
+- Ayam Fillet 500g: ${fillet} pack
+- Ayam Fillet 200g: ${fillet200} pack
+- Ayam Fillet 100g: ${fillet100} pack
+
+${total}
+
+Nama: ${nama}
+Alamat: ${alamat}
+Jam Ambil: ${jam}
+
+Terima kasih 🙏`;
+
+    const url = `https://wa.me/${NOMOR_WA}?text=${encodeURIComponent(pesan)}`;
+    window.open(url, "_blank");
+}
+
+document.getElementById("ayamBakar").addEventListener("input", hitungTotal);
+document.getElementById("ayamGoreng").addEventListener("input", hitungTotal);
+document.getElementById("ayamFillet").addEventListener("input", hitungTotal);

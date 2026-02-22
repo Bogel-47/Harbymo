@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <title>Harbymo Original Grill</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #fff8f0;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 480px;
+            margin: 30px auto;
+            background: #ffffff;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        h1 {
+            text-align: center;
+            color: #b22222;
+            margin-bottom: 5px;
+        }
+        .subtitle {
+            text-align: center;
+            font-size: 14px;
+            color: #666;
+            margin-bottom: 20px;
+        }
+        label {
+            font-weight: bold;
+            margin-top: 12px;
+            display: block;
+        }
+        input {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            border-radius: 6px;
+            border: 1px solid #ccc;
+        }
+        .price {
+            margin-top: 18px;
+            font-size: 18px;
+            font-weight: bold;
+            text-align: center;
+            color: #333;
+        }
+        button {
+            width: 100%;
+            margin-top: 20px;
+            padding: 14px;
+            background: #25D366;
+            border: none;
+            color: white;
+            font-size: 16px;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+        button:hover {
+            background: #1ebc5a;
+        }
+        .footer {
+            text-align: center;
+            margin-top: 15px;
+            font-size: 12px;
+            color: #888;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>🍗 Harbymo Original Grill</h1>
+    <div class="subtitle">Daging Freshh Tinggal Masak • Pesan via WhatsApp</div>
+
+    <label>Ayam Bakar (ekor)</label>
+    <input type="number" id="ayamBakar" min="0" value="0">
+
+    <label>Ayam Goreng (ekor)</label>
+    <input type="number" id="ayamGoreng" min="0" value="0">
+
+    <label>Ayam Fillet 500 gram (pack)</label>
+    <input type="number" id="ayamFillet" min="0" value="0">
+
+    <label>Ayam Fillet 100 gram (pack)</label>
+    <input type="number" id="ayamFillet100" min="0" value="0">
+
+    <label>Ayam Fillet 200 gram (pack)</label>
+    <input type="number" id="ayamFillet200" min="0" value="0">
+
+    <label>Nama Pemesan</label>
+    <input type="text" id="nama" placeholder="Nama Anda">
+
+    <label>Alamat</label>
+    <input type="text" id="alamat" placeholder="Alamat ambil / kirim">
+
+    <label>Jam Ambil</label>
+    <input type="time" id="jam">
+
+    <div class="price" id="totalHarga">
+        Total: Rp0
+    </div>
+
+    <button onclick="kirimWhatsApp()">📲 Pesan via WhatsApp</button>
+
+    <div class="footer">
+        © Harbymo Original Grill
+    </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
