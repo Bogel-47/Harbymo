@@ -70,6 +70,73 @@
             font-size: 12px;
             color: #888;
         }
+        #popupOverlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0,0,0,0.6);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 999;
+    }
+
+    .popup {
+        background: #fff;
+        width: 90%;
+        max-width: 360px;
+        border-radius: 12px;
+        padding: 20px;
+        text-align: center;
+        animation: fadeIn 0.3s ease;
+    }
+
+    .popup h3 {
+        margin-top: 0;
+        color: #333;
+    }
+
+    .popup p {
+        font-size: 14px;
+        color: #555;
+    }
+
+    .popup-actions {
+        display: flex;
+        gap: 10px;
+        margin-top: 20px;
+    }
+
+    .popup-actions button {
+        flex: 1;
+        padding: 12px;
+        border-radius: 8px;
+        border: none;
+        cursor: pointer;
+        font-size: 14px;
+    }
+
+    .btn-cancel {
+        background: #eee;
+    }
+
+    .btn-confirm {
+        background: #25D366;
+        color: white;
+    }
+
+    @keyframes fadeIn {
+        from {
+            opacity: 0;
+            transform: scale(0.95);
+        }
+        to {
+            opacity: 1;
+            transform: scale(1);
+        }
+    }
     </style>
 </head>
 <body>
@@ -114,5 +181,19 @@
 </div>
 
 <script src="script.js"></script>
+<div id="popupOverlay" style="display:none;">
+    <div class="popup">
+        <h3>📢 Informasi Pengiriman</h3>
+        <p>
+            🚚 <b>Pengiriman hanya dilakukan setiap <span style="color:#b22222;">HARI MINGGU</span></b><br><br>
+            📦 Ambil langsung bisa setiap hari sesuai jam operasional.
+        </p>
+
+        <div class="popup-actions">
+            <button class="btn-cancel" onclick="tutupPopup()">Batal</button>
+            <button class="btn-confirm" onclick="lanjutPesan()">Lanjutkan Pesan</button>
+        </div>
+    </div>
+</div>
 </body>
 </html>
